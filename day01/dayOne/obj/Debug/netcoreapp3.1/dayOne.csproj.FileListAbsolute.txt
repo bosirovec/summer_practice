@@ -1,0 +1,13 @@
+C:\Users\Borna\source\repos\dayOne\dayOne\bin\Debug\netcoreapp3.1\dayOne.exe
+C:\Users\Borna\source\repos\dayOne\dayOne\bin\Debug\netcoreapp3.1\dayOne.deps.json
+C:\Users\Borna\source\repos\dayOne\dayOne\bin\Debug\netcoreapp3.1\dayOne.runtimeconfig.json
+C:\Users\Borna\source\repos\dayOne\dayOne\bin\Debug\netcoreapp3.1\dayOne.runtimeconfig.dev.json
+C:\Users\Borna\source\repos\dayOne\dayOne\bin\Debug\netcoreapp3.1\dayOne.dll
+C:\Users\Borna\source\repos\dayOne\dayOne\bin\Debug\netcoreapp3.1\dayOne.pdb
+C:\Users\Borna\source\repos\dayOne\dayOne\obj\Debug\netcoreapp3.1\dayOne.csprojAssemblyReference.cache
+C:\Users\Borna\source\repos\dayOne\dayOne\obj\Debug\netcoreapp3.1\dayOne.AssemblyInfoInputs.cache
+C:\Users\Borna\source\repos\dayOne\dayOne\obj\Debug\netcoreapp3.1\dayOne.AssemblyInfo.cs
+C:\Users\Borna\source\repos\dayOne\dayOne\obj\Debug\netcoreapp3.1\dayOne.csproj.CoreCompileInputs.cache
+C:\Users\Borna\source\repos\dayOne\dayOne\obj\Debug\netcoreapp3.1\dayOne.dll
+C:\Users\Borna\source\repos\dayOne\dayOne\obj\Debug\netcoreapp3.1\dayOne.pdb
+C:\Users\Borna\source\repos\dayOne\dayOne\obj\Debug\netcoreapp3.1\dayOne.genruntimeconfig.cache
