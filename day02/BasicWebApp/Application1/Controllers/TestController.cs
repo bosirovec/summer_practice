@@ -37,7 +37,7 @@ namespace Application1.Controllers
         [Route("api/checkid")]
         public HttpResponseMessage GetID([FromUri]int input)
         {
-           foreach(Vehicle veh in vehicles)
+           foreach(var veh in vehicles)
             {
                 if (veh.id == input)
                     return Request.CreateResponse(HttpStatusCode.OK, veh.model);
@@ -49,9 +49,9 @@ namespace Application1.Controllers
 
         //CREATE method
         [Route("api/add")]
-        public HttpResponseMessage Post([FromBody]Vehicle v)
+        public HttpResponseMessage Post([FromBody]Vehicle vozilo)
         {
-            vehicles.Add(new Vehicle(v.model, v.id));
+            vehicles.Add(new Vehicle(vozilo.model, vozilo.id));
             return Request.CreateResponse(HttpStatusCode.OK, vehicles[vehicles.Count() - 1]);
         }
 
@@ -61,14 +61,14 @@ namespace Application1.Controllers
 
        //UPDATE method
        [Route("api/change")]
-        public HttpResponseMessage PutID([FromUri] int i, [FromUri]int j)
+        public HttpResponseMessage PutID([FromUri] int atmID, [FromUri]int newID)
         {
-            foreach(Vehicle v in vehicles)
+            foreach(var vehicle in vehicles)
             {
-                if(v.id == i)
+                if(vehicle.id == atmID)
                 {
-                    v.id = j;
-                    return Request.CreateResponse(HttpStatusCode.OK, "Switched id on: " + v.model + " from: "  + i + " to: "+ j);
+                    vehicle.id = newID;
+                    return Request.CreateResponse(HttpStatusCode.OK, "Switched id on: " + vehicle.model + " from: "  + atmID + " to: "+ newID);
                 }
             }
             return Request.CreateResponse(HttpStatusCode.NotFound);
@@ -82,11 +82,11 @@ namespace Application1.Controllers
         {
             if (input < 0)
                 return BadRequest();
-            foreach(Vehicle v in vehicles)
+            foreach(var vehicle in vehicles)
             {
-                if(v.id == input)
+                if(vehicle.id == input)
                 { vehicles.Remove(v);
-                    return Ok("Vehicle with the following id has been removed: " + v.id);
+                    return Ok("Vehicle with the following id has been removed: " + vehicle.id);
                 }
             }
             return NotFound();
