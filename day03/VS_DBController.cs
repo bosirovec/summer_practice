@@ -13,12 +13,12 @@ namespace Connecting_to_db.Controllers
 {
     public class Person
     {
-        public string firstName { get; set; }
-        public string lastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public Person(string fName, string lName)
         {
-            firstName = fName;
-            lastName = lName;
+            FirstName = fName;
+            LastName = lName;
         }
     }
 
@@ -47,15 +47,13 @@ namespace Connecting_to_db.Controllers
                 {
                     while(reader.Read())
                     {
-                        Console.WriteLine("{0}\t{1}", reader.GetString(0), reader.GetString(1));
-                        people.Add(new Person(reader.GetString(0), reader.GetString(1)));
+                       people.Add(new Person(reader.GetString(0), reader.GetString(1)));
                         
                     }
                     return Request.CreateResponse(HttpStatusCode.OK, people);
                 }
                 else
                 {
-                    Console.WriteLine("No rows found");
                     return Request.CreateResponse(HttpStatusCode.NotFound, "empty");
                 }
                 reader.Close();
@@ -85,7 +83,7 @@ namespace Connecting_to_db.Controllers
                     while (reader.Read())
                     {
                       
-                        Console.WriteLine("{0}\t{1}\t{2}\t{3}\t{4}", reader.GetString(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetString(4));
+                        
                         if (reader.GetInt32(2) == inptId)
                         {
                             vozila.Add(reader.GetString(0));
@@ -99,7 +97,6 @@ namespace Connecting_to_db.Controllers
                 }
                 else
                 {
-                    Console.WriteLine("No rows found");
                     return Request.CreateResponse(HttpStatusCode.NotFound, inptId);
                 }
                 reader.Close();

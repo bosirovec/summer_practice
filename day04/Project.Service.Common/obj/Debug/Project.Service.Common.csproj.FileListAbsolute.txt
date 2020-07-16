@@ -1,0 +1,15 @@
+C:\Users\Borna\source\repos\Project\Project.Service.Common\obj\Debug\Project.Service.Common.csproj.CoreCompileInputs.cache
+C:\Users\Borna\source\repos\Project\Project.Service.Common\obj\Debug\Project.Service.Common.csprojAssemblyReference.cache
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Service.Common.dll
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Service.Common.pdb
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Model.dll
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Repository.dll
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Model.Common.dll
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Repository.Common.dll
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Model.pdb
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Repository.pdb
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Model.Common.pdb
+C:\Users\Borna\source\repos\Project\Project.Service.Common\bin\Debug\Project.Repository.Common.pdb
+C:\Users\Borna\source\repos\Project\Project.Service.Common\obj\Debug\Project.Service.Common.csproj.CopyComplete
+C:\Users\Borna\source\repos\Project\Project.Service.Common\obj\Debug\Project.Service.Common.dll
+C:\Users\Borna\source\repos\Project\Project.Service.Common\obj\Debug\Project.Service.Common.pdb
