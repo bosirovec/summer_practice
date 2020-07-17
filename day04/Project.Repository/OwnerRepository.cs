@@ -46,11 +46,9 @@ namespace Project.Repository
 
         public bool InsertOwner(Owner vlasnik)
         {
-            try
-            {
-                using(var connection = new SqlConnection(OwnerRepository.connectionString))
+            using(var connection = new SqlConnection(OwnerRepository.connectionString))
                 {
-                    string sql = "INSERT INTO person VALUES (@id,@fn,@ln,@age,@town);";
+                    string sql = "INSERT INTO owner VALUES (@id,@fn,@ln,@age,@town);";
                     connection.Open();
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@id", vlasnik.Owner_id);
@@ -59,60 +57,43 @@ namespace Project.Repository
                     command.Parameters.AddWithValue("@age", vlasnik.Age);
                     command.Parameters.AddWithValue("@town", vlasnik.Town);
                     command.ExecuteNonQuery();
-                }
                 return true;
             }
-            catch(Exception e)
-            {
-                return false;
-            }
+            
         }
 
 
         public bool UpdateOwner(int inptId, Owner vlasnik)
         {
-            try
+            using (var connection = new SqlConnection(OwnerRepository.connectionString))
             {
-                using (var connection = new SqlConnection(OwnerRepository.connectionString))
-                {
-                    string sql = "UPDATE person SET firstname = '@fn', lastname = '@ln', age='@age', town='@town' WHERE owner_id = @id";
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sql, connection);
-                    command.Parameters.AddWithValue("@fn", vlasnik.FirstName);
-                    command.Parameters.AddWithValue("@ln", vlasnik.LastName);
-                    command.Parameters.AddWithValue("@age", vlasnik.Age);
-                    command.Parameters.AddWithValue("@town", vlasnik.Town);
-                    command.Parameters.AddWithValue("@id", inptId);
-                    command.ExecuteNonQuery();
-                }
-
-                    return true;
-            }
-            catch(Exception e)
-            {
-                return false;
+                string sql = "UPDATE owner SET firstname = @fn, lastname = @ln, age=@age, town=@town WHERE owner_id = @id;";
+                connection.Open();
+                SqlCommand command = new SqlCommand(sql, connection);
+                command.Parameters.AddWithValue("@fn", vlasnik.FirstName);
+                command.Parameters.AddWithValue("@ln", vlasnik.LastName);
+                command.Parameters.AddWithValue("@age", vlasnik.Age);
+                command.Parameters.AddWithValue("@town", vlasnik.Town);
+                command.Parameters.AddWithValue("@id", inptId);
+                command.ExecuteNonQuery();
+                return true;
             }
         }
 
 
         public bool DeleteOwner(Owner vlasnik)
         {
-            try
-            {
+           
                 using (var connection = new SqlConnection(OwnerRepository.connectionString))
                 {
-                    string sql = "DELETE owner WHERE owner_id = @id";
+                    string sql = "DELETE owner WHERE owner_id = @id;";
                     connection.Open();
                     SqlCommand command = new SqlCommand(sql, connection);
                     command.Parameters.AddWithValue("@id", vlasnik.Owner_id);
                     command.ExecuteNonQuery();
-                }
                 return true;
-            }
-            catch(Exception e)
-            {
-                return false;
-            }
+                }
+               
         }
 
     }

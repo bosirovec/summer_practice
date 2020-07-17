@@ -7,7 +7,7 @@ using Project.Model.Common;
 
 namespace Project.Model
 {
-    class Vehicle : IVehicle
+    public class Vehicle : IVehicle
     {
         public int Vehicle_id { get; set; }
         public string Model { get; set; }
@@ -23,5 +23,7 @@ namespace Project.Model
             Color = color;
             Owner_id = owner_id;
         }
+
+        public Vehicle() { }
     }
 }

@@ -8,6 +8,7 @@ using Project.Model;
 using Project.Repository.Common;
 using Project.Repository;
 using Project.Service.Common;
+using System.Net;
 
 namespace Project.Service
 {
@@ -23,6 +24,7 @@ namespace Project.Service
 
         public bool InsertOwner(Owner vlasnik)
         {
+            vlasnik.Owner_id = (repository.GetOwners().Count() + 1);
             return repository.InsertOwner(vlasnik);
         }
         
