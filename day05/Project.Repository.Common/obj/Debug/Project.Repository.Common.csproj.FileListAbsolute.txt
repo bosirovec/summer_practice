@@ -1,0 +1,11 @@
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\obj\Debug\Project.Repository.Common.csproj.CoreCompileInputs.cache
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\bin\Debug\Project.Repository.Common.dll
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\bin\Debug\Project.Repository.Common.pdb
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\bin\Debug\Project.Model.Common.dll
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\bin\Debug\Project.Model.dll
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\bin\Debug\Project.Model.Common.pdb
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\bin\Debug\Project.Model.pdb
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\obj\Debug\Project.Repository.Common.csprojAssemblyReference.cache
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\obj\Debug\Project.Repository.Common.csproj.CopyComplete
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\obj\Debug\Project.Repository.Common.dll
+C:\Users\Borna\source\repos\Project\Project.Repository.Common\obj\Debug\Project.Repository.Common.pdb
