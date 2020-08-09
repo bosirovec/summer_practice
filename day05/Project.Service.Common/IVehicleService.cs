@@ -12,9 +12,10 @@ namespace Project.Service
 {
     public interface IVehicleService
     {
-        Task<List<Vehicle>> GetVehicles();
-        Task<bool> InsertVehicle(Vehicle vehicle);
-        Task<bool> Drive(int idToBeDriven, int driveLength);
-        Task<bool> DeleteVehicle(Vehicle vehicle);
+        Task<List<Vehicle>> GetVehiclesAsync();
+        Task<Vehicle> GetVehicleAsync(int id);
+        Task<VehicleNoID> InsertVehicleAsync(VehicleNoID vehicle);
+        Task<Vehicle> DriveAsync(int idToBeDriven, int driveLength);
+        Task<bool> DeleteVehicleAsync(int id);
     }
 }

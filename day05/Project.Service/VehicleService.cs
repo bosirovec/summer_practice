@@ -16,31 +16,33 @@ namespace Project.Service
     {
         private VehicleRepository repository = new VehicleRepository();
 
-        public async Task<List<Vehicle>> GetVehicles()
+
+        public async Task<List<Vehicle>> GetVehiclesAsync()
         {
-            return await repository.GetVehicles();
+            return await repository.GetVehiclesAsync();
         }
 
+
+        public async Task<Vehicle> GetVehicleAsync(int id)
+        {
+            return await repository.GetVehicleAsync(id);
+        }
         
         
-        public async Task<bool> InsertVehicle(Vehicle vehicle)
+        public async Task<VehicleNoID> InsertVehicleAsync(VehicleNoID vehicle)
         {
-            var vehList = new List<Vehicle>();
-            vehList = await repository.GetVehicles();
-            vehicle.Vehicle_id =  vehList.Count() + 2;
-            //vehicle.Vehicle_id = repository.GetVehicles().Count() + 2;
-            return await repository.InsertVehicle(vehicle);
+             return await repository.InsertVehicleAsync(vehicle);
         }
 
 
-        public async Task<bool> Drive(int toBeDriven, int driveLength)
+        public async Task<Vehicle> DriveAsync(int toBeDriven, int driveLength)
         {
-            return await repository.Drive(toBeDriven, driveLength);
+            return await repository.DriveAsync(toBeDriven, driveLength);
         }
 
-        public async Task<bool> DeleteVehicle(Vehicle vehicle)
+        public async Task<bool> DeleteVehicleAsync(int id)
         {
-            return await repository.DeleteVehicle(vehicle);
+            return await repository.DeleteVehicleAsync(id);
         }
 
 

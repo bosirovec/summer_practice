@@ -10,9 +10,10 @@ namespace Project.Repository.Common
 {
     public interface IOwnerRepository
     {
-        Task<List<Owner>> GetOwners();
-        Task<bool> InsertOwner(Owner owner);
-        Task<bool> UpdateOwner(int id, Owner owner);
-        Task<bool> DeleteOwner(Owner owner);
+        Task<List<Owner>> GetOwnersAsync();
+        Task<Owner> GetOwnerAsync(int id);
+        Task<OwnerNoID> InsertOwnerAsync(OwnerNoID owner);
+        Task<Owner> UpdateOwnerAsnyc(int id, Owner owner);
+        Task<bool> DeleteOwnerAsync(int id);
     }
 }

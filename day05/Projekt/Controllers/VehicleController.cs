@@ -21,61 +21,43 @@ namespace Projekt.Controllers
     public class VehicleController : ApiController
     {
         private VehicleService service = new VehicleService();
-
+        private IMapper Mapper { get; set; }
 
         [Route("api/getVehicles")]
         public async Task<HttpResponseMessage> Get()
         {
-            return Request.CreateResponse(HttpStatusCode.OK, service.GetVehicles());
+            return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<List<Vehicle>, List<VehicleNoID>>(await this.service.GetVehiclesAsync()));
+        }
+
+        [Route("api/getVehicle")]
+        public async Task<HttpResponseMessage> GetVeh([FromUri]int id)
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, service.GetVehicleAsync(id));
         }
 
 
-
         [Route("api/insertVehicle")]
-        public async Task<HttpResponseMessage> Post([FromBody] RestVehicle input)
-        {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<RestVehicle, Project.Model.Vehicle>());
-            var mapper = new Mapper(config);
-            Project.Model.Vehicle vehicle = mapper.Map<Project.Model.Vehicle>(input);
-       
-            return Request.CreateResponse(HttpStatusCode.OK, service.InsertVehicle(vehicle));
-       }
+        public async Task<HttpResponseMessage> Post([FromBody] VehicleNoID input)
+        { 
+            return Request.CreateResponse(HttpStatusCode.OK, service.InsertVehicleAsync(input));
+        }
 
 
         [Route("api/drive")]
         public async Task<HttpResponseMessage> Put([FromUri] int vehId, [FromUri] int driveLength)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, service.Drive(vehId, driveLength));
+            return Request.CreateResponse(HttpStatusCode.OK, service.DriveAsync(vehId, driveLength));
         }
 
 
         [Route("api/deleteVehicle")]
-        public async Task<HttpResponseMessage> Delete([FromBody]Vehicle vehicle)
+        public async Task<HttpResponseMessage> Delete([FromUri]int id)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, service.DeleteVehicle(vehicle));
+            return Request.CreateResponse(HttpStatusCode.OK, service.DeleteVehicleAsync(id));
         }
 
     }
 
     #endregion controllerClass
 
-    #region restClass
-    public class RestVehicle
-    {
-        public string Model { get; set; }
-        public int Kilometers { get; set; }
-        public string Color { get; set; }
-        public int Owner_Id { get; set; }
-
-        public RestVehicle(string model, int kms, string color, int owner_id)
-        {
-            Model = model;
-            Kilometers = kms;
-            Color = color;
-            Owner_Id = owner_id;
-        }
-
-        public RestVehicle() { }
-    }
-    #endregion restClass
-}
+ }

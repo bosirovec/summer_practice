@@ -22,25 +22,32 @@ namespace Projekt.Controllers
 
 
         private OwnerService ownerService = new OwnerService();
-        
-        
+        private IMapper Mapper { get; set; }
+
+             
         
         [Route("api/getOwners")]
         public async Task<HttpResponseMessage> Get()
         {
-           return Request.CreateResponse(HttpStatusCode.OK, ownerService.GetOwners());
+           return Request.CreateResponse(HttpStatusCode.OK, Mapper.Map<List<Owner>, List<OwnerNoID>>(await this.ownerService.GetOwnersAsync()));
         }
 
-       
-        
-        [Route("api/InsertOwner")]
-        public async Task<HttpResponseMessage> Post([FromBody]RestOwner input)
+
+
+        [Route("api/getOwner")]
+        public async Task<HttpResponseMessage> GetOwner([FromUri] int id)
         {
-            var config = new MapperConfiguration(cfg => cfg.CreateMap<RestOwner, Project.Model.Owner>());
-            var mapper = new Mapper(config);
-            Project.Model.Owner vlasnik = mapper.Map<Project.Model.Owner>(input);
-           
-            return Request.CreateResponse(HttpStatusCode.OK, ownerService.InsertOwner(vlasnik));
+            return Request.CreateResponse(HttpStatusCode.OK, ownerService.GetOwnerAsync(id));
+        }
+
+
+
+
+        [Route("api/InsertOwner")]
+        public async Task<HttpResponseMessage> Post([FromBody]OwnerNoID vlasnik)
+        {
+                       
+            return Request.CreateResponse(HttpStatusCode.OK, ownerService.InsertOwnerAsync(vlasnik));
            
             
         }
@@ -49,14 +56,14 @@ namespace Projekt.Controllers
         [Route("api/UpdateOwner")]
         public async Task<HttpResponseMessage> Put([FromUri] int id, [FromBody] Owner vlasnik)
         {
-            return Request.CreateResponse(HttpStatusCode.OK, ownerService.UpdateOwner(id, vlasnik));
+            return Request.CreateResponse(HttpStatusCode.OK, ownerService.UpdateOwnerAsync(id, vlasnik));
         }
 
 
         [Route("api/DeleteOwner")]
-        public async Task<HttpResponseMessage> Delete([FromBody] Project.Model.Owner vlasnik)
+        public async Task<HttpResponseMessage> Delete([FromUri] int id)
         {
-            return Request.CreateResponse(HttpStatusCode.OK ,ownerService.DeleteOwner(vlasnik));
+            return Request.CreateResponse(HttpStatusCode.OK ,ownerService.DeleteOwnerAsync(id));
         }
 
 
@@ -65,22 +72,4 @@ namespace Projekt.Controllers
 
     #endregion controllerClass
 
-    #region restClass
-    public class RestOwner
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public int Age { get; set; }
-        public string Town { get; set; }
-
-        public RestOwner(string firstName, string lastName, int age, string town)
-        {
-            FirstName = firstName;
-            LastName = lastName;
-            Age = age;
-            Town = town;
-        }
-        public RestOwner() { }
-    }
-    #endregion restClass
 }

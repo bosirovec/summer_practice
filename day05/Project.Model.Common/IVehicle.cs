@@ -8,11 +8,19 @@ namespace Project.Model.Common
 {
     public interface IVehicle
     {
-        int Vehicle_id { get; set; }
+        int VehicleID {get; set; }
         string Model { get; set; }
         int Kilometers { get; set; }
         string Color { get; set; }
-        int Owner_id { get; set; }
+        int OwnerID { get; set; }
 
+    }
+
+    public interface IVehicleNoID
+    {
+        string Model { get; set; }
+        int Kilometers { get; set; }
+        string Color { get; set; }
+        int OwnerID { get; set; }
     }
 }

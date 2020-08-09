@@ -10,9 +10,10 @@ namespace Project.Repository.Common
 {
     public interface IVehicleRepository
     {
-        Task<List<Vehicle>> GetVehicles();
-        Task<bool> InsertVehicle(Vehicle vehicle);
-        Task<bool> Drive(int id, int newMiles);
-        Task<bool> DeleteVehicle(Vehicle vehicle);
+        Task<List<Vehicle>> GetVehiclesAsync();
+        Task<Vehicle> GetVehicleAsync(int id);
+        Task<VehicleNoID> InsertVehicleAsync (VehicleNoID vehicle);
+        Task<Vehicle> DriveAsync (int id, int newMiles);
+        Task<bool> DeleteVehicleAsync(int id);
     }
 }

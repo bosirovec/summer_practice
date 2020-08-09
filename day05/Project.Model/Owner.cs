@@ -9,7 +9,7 @@ namespace Project.Model
 {
     public class Owner : IOwner
     {
-        public int Owner_id { get; set; }
+        public int OwnerID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
@@ -17,12 +17,30 @@ namespace Project.Model
 
         public Owner(int id, string firstName, string lastName, int age, string town)
         {
-            Owner_id = id;
+            OwnerID = id;
             FirstName = firstName;
             LastName = lastName;
             Age = age;
             Town = town;
         }
         public Owner() { }
+    }
+
+    public class OwnerNoID : IOwnerNoID
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public int Age { get; set; }
+        public string Town { get; set; }
+
+        public OwnerNoID(string firstName, string lastName, int age, string town)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            Age = age;
+            Town = town;
+        }
+
+
     }
 }

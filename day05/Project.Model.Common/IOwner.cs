@@ -8,7 +8,15 @@ namespace Project.Model.Common
 {
     public interface IOwner
     {
-        int Owner_id { get; set; }
+        int OwnerID{ get; set; }
+        string FirstName { get; set; }
+        string LastName { get; set; }
+        int Age { get; set; }
+        string Town { get; set; }
+    }
+
+    public interface IOwnerNoID
+    {
         string FirstName { get; set; }
         string LastName { get; set; }
         int Age { get; set; }

@@ -4,3 +4,9 @@ C:\Users\Borna\source\repos\Project\Project.Model.Common\obj\Debug\Project.Model
 C:\Users\Borna\source\repos\Project\Project.Model.Common\obj\Debug\Project.Model.Common.csproj.CoreCompileInputs.cache
 C:\Users\Borna\source\repos\Project\Project.Model.Common\obj\Debug\Project.Model.Common.dll
 C:\Users\Borna\source\repos\Project\Project.Model.Common\obj\Debug\Project.Model.Common.pdb
+C:\Users\Borna\Desktop\summer_practice\day05\Project.Model.Common\bin\Debug\Project.Model.Common.dll
+C:\Users\Borna\Desktop\summer_practice\day05\Project.Model.Common\bin\Debug\Project.Model.Common.pdb
+C:\Users\Borna\Desktop\summer_practice\day05\Project.Model.Common\obj\Debug\Project.Model.Common.csprojAssemblyReference.cache
+C:\Users\Borna\Desktop\summer_practice\day05\Project.Model.Common\obj\Debug\Project.Model.Common.csproj.CoreCompileInputs.cache
+C:\Users\Borna\Desktop\summer_practice\day05\Project.Model.Common\obj\Debug\Project.Model.Common.dll
+C:\Users\Borna\Desktop\summer_practice\day05\Project.Model.Common\obj\Debug\Project.Model.Common.pdb

@@ -11,9 +11,10 @@ namespace Project.Service.Common
 {
     public interface IOwnerService
     {
-        Task<List<Owner>> GetOwners();
-        Task<bool> InsertOwner(Owner owner);
-        Task<bool> UpdateOwner(int inptID, Owner owner);
-        Task<bool> DeleteOwner(Owner owner);
+        Task<List<Owner>> GetOwnersAsync();
+        Task<Owner> GetOwnerAsync(int id);
+        Task<OwnerNoID> InsertOwnerAsync(OwnerNoID owner);
+        Task<Owner> UpdateOwnerAsync(int inptID, Owner owner);
+        Task<bool> DeleteOwnerAsync(int id);
     }
 }

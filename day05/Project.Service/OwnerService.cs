@@ -16,30 +16,33 @@ namespace Project.Service
     {
         private OwnerRepository repository = new OwnerRepository();
         
-        public async Task<List<Owner>> GetOwners()
+        public async Task<List<Owner>> GetOwnersAsync()
         {
-            return await repository.GetOwners();
+            return await repository.GetOwnersAsync();
         }
 
 
-        public async Task<bool> InsertOwner(Owner vlasnik)
+        public async Task<Owner> GetOwnerAsync(int id)
         {
-            var ownerList = new List<Owner>;
-            ownerList = await repository.GetOwners();
-            vlasnik.Owner_id = ownerList.Count() + 1;
-            //vlasnik.Owner_id = (repository.GetOwners().Count() + 1);
-            return await repository.InsertOwner(vlasnik);
+            return await repository.GetOwnerAsync(id);
+        }
+
+
+        public async Task<OwnerNoID> InsertOwnerAsync(OwnerNoID vlasnik)
+        {
+            return await repository.InsertOwnerAsync(vlasnik);
         }
         
         
-        public async Task<bool> UpdateOwner(int inptId,Owner vlasnik)
+        public async Task<Owner> UpdateOwnerAsync(int inptId,Owner vlasnik)
         {
-            return await repository.UpdateOwner(inptId,vlasnik);
+            return await repository.UpdateOwnerAsnyc(inptId, vlasnik);
         }
 
-        public async Task<bool> DeleteOwner(Owner vlasnik)
+
+        public async Task<bool> DeleteOwnerAsync(int id)
         {
-            return await repository.DeleteOwner(vlasnik);
+            return await repository.DeleteOwnerAsync(id);
         }
     }
 }

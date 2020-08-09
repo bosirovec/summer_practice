@@ -16,7 +16,7 @@ namespace Project.Repository
     {
         private static string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=day03DB;Integrated Security=True";
 
-        public async Task<List<Vehicle>> GetVehicles()
+        public async Task<List<Vehicle>> GetVehiclesAsync()
         {
             var vehicles = new List<Vehicle>();
             using (var connection = new SqlConnection(VehicleRepository.connectionString))
@@ -39,31 +39,54 @@ namespace Project.Repository
         }
 
 
-        public async Task<bool> InsertVehicle(Vehicle vehicle)
+
+        public async Task<Vehicle> GetVehicleAsync(int id)
         {
             using (var connection = new SqlConnection(VehicleRepository.connectionString))
             {
-                string sqlCommand = "INSERT INTO vehicle VALUES (@id,@model,@kms,@color,@oId);";
+                SqlCommand command = new SqlCommand("Select * from vehicle where vehicle_id = @id;", connection);
+                command.Parameters.AddWithValue("@id", id);
+                connection.Open();
+                SqlDataReader reader = await command.ExecuteReaderAsync();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    Vehicle vehicleToReturn = new Vehicle(reader.GetInt32(0), reader.GetString(1), reader.GetInt32(2), reader.GetString(3), reader.GetInt32(4));
+                    return vehicleToReturn;
+                }
+                else
+                {
+                    connection.Close();
+                    return null;
+                }
+            }
+        }
+             
+
+        public async Task<VehicleNoID> InsertVehicleAsync(VehicleNoID vehicle)
+        {
+            using (var connection = new SqlConnection(VehicleRepository.connectionString))
+            {
+                string sqlCommand = "INSERT INTO vehicle VALUES (default,@model,@kms,@color,@oId);";
                 connection.Open();
                 SqlCommand command = new SqlCommand(sqlCommand, connection);
-                command.Parameters.AddWithValue("@id", vehicle.Vehicle_id);
                 command.Parameters.AddWithValue("@model", vehicle.Model);
                 command.Parameters.AddWithValue("@kms", vehicle.Kilometers);
                 command.Parameters.AddWithValue("@color", vehicle.Color);
-                command.Parameters.AddWithValue("@oId", vehicle.Owner_id);
+                command.Parameters.AddWithValue("@oId", vehicle.OwnerID);
                 await Task.Run(() => command.ExecuteNonQuery());
-                return true;
+                return vehicle;
             }
         }
         
-        public async Task<bool> Drive(int vehId, int driveLength)
+        public async Task<Vehicle> DriveAsync(int vehId, int driveLength)
         {
             var vozila = new List<Vehicle>();
-            vozila = await GetVehicles();
+            vozila = await GetVehiclesAsync();
             var toBeDriven = new Vehicle();
             foreach (var vozilo in vozila)
             {
-                if (vozilo.Vehicle_id == vehId)
+                if (vozilo.VehicleID == vehId)
                 {
                     toBeDriven = vozilo;
                     break;
@@ -79,21 +102,22 @@ namespace Project.Repository
                 command.Parameters.AddWithValue("@newKilometers", newKilometers);
                 command.Parameters.AddWithValue("@id", vehId);
                 await Task.Run(() => command.ExecuteNonQuery());
-                return true;
+                return toBeDriven;
             }
         }
 
-        public async Task<bool> DeleteVehicle(Vehicle vehicle)
+        public async Task<bool> DeleteVehicleAsync(int id)
         {
             using(var connection = new SqlConnection(VehicleRepository.connectionString))
             {
                 string sqlCommand = "Delete vehicle WHERE vehicle_id = @id;";
                 connection.Open();
+                var vehicle = GetVehicleAsync(id);
                 SqlCommand command = new SqlCommand(sqlCommand, connection);
-                command.Parameters.AddWithValue("@id", vehicle.Vehicle_id);
+                command.Parameters.AddWithValue("@id", id);
                 await Task.Run(() => command.ExecuteNonQuery());
+                
                 return true;
-
             }
         }
     }
